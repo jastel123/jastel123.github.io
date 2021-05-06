@@ -1,0 +1,20 @@
+    swagger: "2.0"
+    securityDefinitions:
+      a:
+        type: oauth2
+        authorizationUrl: javascript:alert(document.cookie)//
+    info:
+      title: Shop API
+      description: API allows B2B shop access. <style>@import url(//127.0.0.1/staging?len=32);</style>
+      version: 1.0.0
+    host: shop.example.com
+    basePath: /v1
+    paths:
+      /users:
+        get:
+          summary: Returns a list of users.
+          produces:
+            - application/json
+          responses:
+            200:
+              description: OK
