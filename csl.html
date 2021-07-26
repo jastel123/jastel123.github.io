@@ -22,8 +22,9 @@
                 console.log("tk:"+tk+":"+request_time)
                 if (request_time > 2500) {
                     if (tk.length == 36) {
-                        sendKey(tk)
+                        sendKey("FINAL:"+tk)
                     } else {
+                        sendKey("INT:"+tk)
                         nextChar(tk)
                     }
                 }
@@ -33,7 +34,6 @@
     }
 
     nextChar("")
-
 
     function sendKey(k)
     {
