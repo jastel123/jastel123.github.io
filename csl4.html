@@ -39,12 +39,11 @@
                 time = performance.now() - start;
                 win.close();
                 console.log('It took %d ms to load the window', time);
-                if (time > 3300) {
+                if (time > 3400) {
                     key += chars.charAt(i)
                     sendKey("rt:"+time+" INT:"+key)
                     if (key.length < 3) {
                         console.log("nextkey")
-                        sendKey("rt:"+time+" INT:"+key)
                         timeLoad(url, key, 0)
                     }
                 } else {
