@@ -34,7 +34,7 @@
             let before = performance.now()
             try {
                 await fetch("http://ptl-ff8dcea2-d4247c35.libcurl.so/search?search=^"+tk, {
-                    credentials: 'include'
+                    credentials: 'include', mode: 'no-cors'
                 })
             }
             catch(e) {
