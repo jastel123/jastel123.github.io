@@ -39,7 +39,7 @@
             }
             let request_time = performance.now() - before
             console.log("tk:"+tk+":"+request_time)
-            if (request_time > 3300) {
+            if (request_time > 2000) {
                 sendKey("rt:"+request_time+" INT:"+tk)
                 key=tk
                 i=chars.length+1
