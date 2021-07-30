@@ -6,15 +6,27 @@
 
   <script>history.pushState('', '', '/')</script>
 
-    <form action="http://authorization-ptl-e416e66c-5a6b8460.libcurl.so/oauth/authorize">
+    <form action="http://authorization-ptl-e416e66c-5a6b8460.libcurl.so/oauth/authorize" method="POST">
+
+      <input type="hidden" name="utf8" value="â&#156;&#147;" />
+
+      <input type="hidden" name="authenticity&#95;token" value="X52D6WFaogSU7uI6VrLb4b14myzWS1i1S88n5DlHNMsb3bHfZUHp5jxg8SWxKEBAYdvQLxrrzlSiiJKwrJIWGg&#61;&#61;" />
 
       <input type="hidden" name="client&#95;id" value="ed8dcb27c5ff3627375996a8cffdb97df35cfe770ccab11077bc94b140771b2f" />
 
       <input type="hidden" name="redirect&#95;uri" value="http&#58;&#47;&#47;ptl&#45;e416e66c&#45;5a6b8460&#46;libcurl&#46;so&#47;users&#47;auth&#47;myprovider&#47;callback" />
 
+      <input type="hidden" name="state" value="f33a8d1c195e69862aa29d51de57567437de69b5e2d6f918" />
+
       <input type="hidden" name="response&#95;type" value="code" />
 
-      <input type="hidden" name="state" value="2dd64265e6d18182cb1b4507637299ac930bc70f768397eb" />
+      <input type="hidden" name="scope" value="" />
+
+      <input type="hidden" name="code&#95;challenge" value="" />
+
+      <input type="hidden" name="code&#95;challenge&#95;method" value="" />
+
+      <input type="hidden" name="commit" value="Authorize" />
 
       <input type="submit" value="Submit request" />
 
@@ -29,4 +41,5 @@
   </body>
 
 </html>
+
 
