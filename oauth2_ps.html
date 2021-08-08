@@ -8,9 +8,9 @@
 
 (async ()=>{
     var client_url = "http://ptl-70a53532-e23265ca.libcurl.so"
-    var code = "817b09706c85db15fffda1d2afdb74585486acda5c7741151e4c7de82f51d9ac"
+    var code = "d184e4b01a2d383e5ccbe2d3f4bb4f48187e48c8d52ee5f3504dd3672d17d1b1"
     var state = "2021080823"
-    var utc_m= "29"
+    var utc_m= "35"
     
     function zeroPad(num, size) {
         num = num.toString();
@@ -36,7 +36,7 @@
     catch(e) {
         console.log("BB"+e);
     }
-    for (let m=utc_m; m<utc_m+4; m++)
+    for (let m=utc_m; m<utc_m+2; m++)
     {
         for (let s=0;s<60;s++) {
             try {
