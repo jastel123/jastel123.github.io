@@ -8,8 +8,8 @@
 
 (async ()=>{
     var client_url = "http://ptl-357e63f6-544b1c72.libcurl.so"
-    var code = "8e2e8c7d5d114bb52fbe9fed73cf48ca8e7951681b4fb63c53d6565f6e78ec52"
-    var state = "2021080903"
+    var code = "ccf55624834ed18a8b504ed2be260dfabd809236e1a92e9aed6be239a0168acd"
+    var state = "2021080907"
 
     function zeroPad(num, size) {
         num = num.toString();
@@ -18,7 +18,7 @@
     }
 
     var d=new Date()
-    var m_utc = d.getUTCMinutes()
+    var utc_m = d.getUTCMinutes()
 
     try {
         await fetch(client_url+"/unlink", {
